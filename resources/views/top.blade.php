@@ -23,6 +23,37 @@
         
     </head>
     <body>
-        
+        <div class="container">
+            <main>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="accordion" id="news">
+                        @foreach ($news as $year => $lists)
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#{{$year}}" aria-expanded="false" aria-controls="{{$year}}">
+                                        {{$year}}年
+                                    </button>
+                                </h2>
+                                <div id="{{$year}}" class="accordion-collapse collapse" data-bs-parent="#news">
+                                    <div class="accordion-body">
+                                        <ul class="list-group">
+                                        @foreach ($lists as $list)
+                                            <li class="list-group-item">
+                                                {{$list->month}}月@if ($list->day){{$list->day}}日@endif
+                                                <button type="button" class="btn btn-link text-start">{{$list->context}}</button>
+                                            </li>
+                                        @endforeach
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <script src="{{ asset('js/main.js') }}"></script>
     </body>
 </html>
