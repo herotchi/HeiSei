@@ -1,4 +1,4 @@
-class Yahoo 
+export class Yahoo 
 {
     constructor() {
         this.year = null;
@@ -13,7 +13,7 @@ class Yahoo
 
     async fetchYahoo() {
 
-        const url = './api/analysis';
+        const url = './api/yahoo';
         const body = {
             text: this.text
         };
@@ -87,7 +87,7 @@ class Yahoo
                     const li = document.createElement('li');
                     li.className = 'list-group-item';
                     let date = `${news['year']}年${news['month']}月`;
-                    if (news['day']) {console.log(news['day']);
+                    if (news['day']) {
                         date += `${news['day']}日`;
                     }
                     li.innerText = date;
@@ -110,8 +110,5 @@ class Yahoo
         element.textContent  = message;
         toast.show();
     }
-
     
 }
-
-const yahoo = new Yahoo();

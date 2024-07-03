@@ -10,14 +10,14 @@ use App\Models\News;
 class ApiController extends Controller
 {
     //
-    public function analysis(AnalysisRequest $request) {
+    public function yahoo(AnalysisRequest $request) {
         $input = $request->validated();
-        $data = $this->accessYahooApi($input['text']);//var_dump($data);
+        $data = $this->accessYahooApi($input['text']);
         $nouns = $this->filterNouns($data);
         
         $model = new News();
         $news = $model->getSameNounsNews($input['text'], $nouns);
-//var_dump($news);
+
         return response()->json($news);
     }
 

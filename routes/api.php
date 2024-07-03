@@ -21,5 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });*/
 
 Route::middleware(['guest'])->group(function () {
-    Route::post('/analysis', [ApiController::class, 'analysis']);
+    Route::post('/yahoo', [ApiController::class, 'yahoo']);
 });

@@ -41,7 +41,7 @@
                                         @foreach ($lists as $list)
                                             <li class="list-group-item">
                                                 {{$list->month}}月@if ($list->day){{$list->day}}日@endif
-                                                <button type="button" class="btn btn-link text-start" onclick="yahoo.analysis({{$list->year}}, this);">{{$list->context}}</button>
+                                                <button type="button" class="btn btn-link text-start" onclick="clickFunction({{$list->year}}, this);">{{$list->context}}</button>
                                             </li>
                                         @endforeach
                                         </ul>
@@ -71,7 +71,6 @@
             </div>
         </div>
 
-        <script src="{{ asset('js/main.js') }}"></script>
-        <script src="{{ asset('js/yahoo.js') }}"></script>
+        <script type="module" src="{{ asset('js/main.js') }}"></script>
     </body>
 </html>
