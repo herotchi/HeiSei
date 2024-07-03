@@ -28,4 +28,20 @@ class News extends Model
 
         return $news;
     }
+
+
+    public function getSameNounsNews($text, $nouns)
+    {
+        $news = [];
+        foreach ($nouns as $value) {
+            $news[$value] = $this::where('context', 'like', "%{$value}%")
+            ->where('context', '<>', $text)
+            ->orderBy('year', 'asc')
+            ->orderBy('month', 'asc')
+            ->orderBy('day', 'asc')
+            ->get();
+        }
+
+        return $news;
+    }
 }

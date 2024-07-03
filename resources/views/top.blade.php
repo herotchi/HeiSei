@@ -26,8 +26,8 @@
         <div class="container">
             <main>
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="accordion" id="news">
+                    <div class="col-md-4" id="news">
+                        <div class="accordion" id="newsChild">
                         @foreach ($news as $year => $lists)
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
@@ -35,13 +35,13 @@
                                         {{$year}}年
                                     </button>
                                 </h2>
-                                <div id="{{$year}}" class="accordion-collapse collapse" data-bs-parent="#news">
+                                <div id="{{$year}}" class="accordion-collapse collapse" data-bs-parent="#newsChild">
                                     <div class="accordion-body">
                                         <ul class="list-group">
                                         @foreach ($lists as $list)
                                             <li class="list-group-item">
                                                 {{$list->month}}月@if ($list->day){{$list->day}}日@endif
-                                                <button type="button" class="btn btn-link text-start">{{$list->context}}</button>
+                                                <button type="button" class="btn btn-link text-start" onclick="yahoo.analysis({{$list->year}}, this);">{{$list->context}}</button>
                                             </li>
                                         @endforeach
                                         </ul>
@@ -51,9 +51,27 @@
                         @endforeach
                         </div>
                     </div>
+                    <div class="col-md-4" id="nouns">
+
+                    </div>
+                    <div class="col-md-4" id="music">
+
+                    </div>
                 </div>
             </main>
         </div>
+
+        <div class="toast-container position-fixed top-0 end-0 p-3">
+            <div id="toast" class="toast text-bg-danger" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="3000">
+                <div class="d-flex" data-bs-theme="dark">
+                    <div class="toast-body">
+                    </div>
+                    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="閉じる"></button>
+                </div>
+            </div>
+        </div>
+
         <script src="{{ asset('js/main.js') }}"></script>
+        <script src="{{ asset('js/yahoo.js') }}"></script>
     </body>
 </html>
