@@ -12,12 +12,14 @@ export class Music
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     }
 
+
     async analysis(year) {
         this.year = year;
         
         await this.fetchYearData();
         this.displayMusicSelector();
     }
+    
 
     async fetchYearData() {
         try {
@@ -49,10 +51,6 @@ export class Music
                 }
 
                 this.searchYouTube();
-
-
-            } else {
-
             }
         });
     }
@@ -69,7 +67,7 @@ export class Music
                 this.idList = data.idList;console.log(data.idList);
                 await this.setVideos();
             }
-        } catch (error) {console.log(error);
+        } catch (error) {
             this.showToast('通信に失敗しました。');
         }
     }
