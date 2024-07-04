@@ -190,9 +190,7 @@ return [
     |--------------------------------------------------------------------------
     | API KEY
     |--------------------------------------------------------------------------
-    |
-    | GEMINI API V3
-    |
     */
-    'yahoo_api_key' => env('YAHOO_API_KEY')
+    'yahoo_api_key' => env('YAHOO_API_KEY'),
+    'youtube_api_key' => env('YOUTUBE_API_KEY'),
 ];

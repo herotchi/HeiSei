@@ -3,14 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\Api\AnalysisRequest;
+use App\Http\Requests\Api\YahooRequest;
+use App\Http\Requests\Api\YoutubeRequest;
 
 use App\Models\News;
+
+use Google_Client;
+use Google_Service_YouTube;
 
 class ApiController extends Controller
 {
     //
-    public function yahoo(AnalysisRequest $request) {
+    public function yahoo(YahooRequest $request) {
         $input = $request->validated();
         $data = $this->accessYahooApi($input['text']);
         $nouns = $this->filterNouns($data);
@@ -19,6 +23,39 @@ class ApiController extends Controller
         $news = $model->getSameNounsNews($input['text'], $nouns);
 
         return response()->json($news);
+    }
+
+
+    public function youtube(YoutubeRequest $request) {
+        $input = $request->validated();
+
+        $client = new Google_Client();
+        $client->setApplicationName('HeiSei');
+        $client->setDeveloperKey(config('app.youtube_api_key'));
+
+        $youtube = new Google_Service_YouTube($client);
+        $params = [
+            'q'             => "{$input['keyword']}",
+            'type'          => 'video',
+            'maxResults'    => 4,
+        ];
+
+        try {
+            $videos = $youtube->search->listSearch('id', $params);    
+        } catch (Google_Service_Exception $e) {
+            $response['errors']  = $e->getMessage();
+            throw new HttpResponseException(response()->json($response));
+        } catch (Google_Exception $e) {
+            $response['errors']  = $e->getMessage();
+            throw new HttpResponseException(response()->json($response));
+        }
+
+        $idList = [];
+        foreach ($videos['items'] as $video) {
+            $idList[] = $video['id']['videoId'];
+        }
+
+        return response()->json(['idList' => $idList]);
     }
 
 

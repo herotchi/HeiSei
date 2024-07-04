@@ -54,8 +54,14 @@
                     <div class="col-md-4" id="nouns">
 
                     </div>
-                    <div class="col-md-4" id="music">
+                    <div class="col-md-4">
+                        <select id="music" class="form-select{{ $errors->has('music') ? ' is-invalid' : '' }}"
+                            name="music">
+                            <option value="">---</option>
+                        </select>
+                        <div id="playlist">
 
+                        </div>
                     </div>
                 </div>
             </main>
