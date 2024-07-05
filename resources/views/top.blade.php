@@ -78,6 +78,9 @@
                     </div>
                 </div>
                 @include('page_top')
+                <footer class="my-1 pt-4 text-muted text-center text-small">
+                    <p class="mb-1">&copy; 2024− へろっちシマウマ～ず</p>
+                </footer>
             </main>
         </div>
 
