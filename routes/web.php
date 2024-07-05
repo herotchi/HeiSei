@@ -17,8 +17,10 @@ use App\Http\Controllers\TopController;
 
 /*Route::get('/', function () {
     return view('welcome');
-});*/
+});
 Route::middleware(['guest'])->group(function () {
-
+    Route::get('/', [TopController::class, 'top'])->name('top');
+});*/
+Route::group(['middleware' => 'basicauth'], function() {
     Route::get('/', [TopController::class, 'top'])->name('top');
 });

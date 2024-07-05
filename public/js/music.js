@@ -19,7 +19,7 @@ export class Music
         await this.fetchYearData();
         this.displayMusicSelector();
     }
-    
+
 
     async fetchYearData() {
         try {
@@ -64,7 +64,7 @@ export class Music
             if (data.errors) {
                 this.showToast('入力エラーです。');
             } else {
-                this.idList = data.idList;console.log(data.idList);
+                this.idList = data.idList;
                 await this.setVideos();
             }
         } catch (error) {
