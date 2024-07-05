@@ -31,7 +31,7 @@
         <div class="container">
             <main>
                 <div class="row">
-                    <div class="col-md-4 border" id="news">
+                    <div class="col-md-4" id="news">
                         <ul class="list-group my-2">
                             <li class="list-group-item">ニュース</li>
                         </ul>
@@ -59,12 +59,12 @@
                         @endforeach
                         </div>
                     </div>
-                    <div class="col-md-4 border" id="nouns">
+                    <div class="col-md-4" id="nouns">
                         <ul class="list-group my-2">
                             <li class="list-group-item">関連ワード</li>
                         </ul>
                     </div>
-                    <div class="col-md-4 border">
+                    <div class="col-md-4">
                         <ul class="list-group my-2">
                             <li class="list-group-item">オリコンランキング</li>
                         </ul>
