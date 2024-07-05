@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ config('app.name', 'HeiSei') }}</title>
+        <title>{{ config('app.name', '平成ルックバック') }}</title>
 
         <!-- favicon -->
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
@@ -22,11 +22,19 @@
         <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
         
     </head>
-    <body>
+    <body style="padding-top:4.5rem;" class="bg-secondary">
+        <nav class="navbar bg-body-tertiary fixed-top bg-dark border-bottom border-body" data-bs-theme="dark">
+            <div class="container-fluid">
+                <span class="navbar-brand text-info">平成ルックバック</span>
+            </div>
+        </nav>
         <div class="container">
             <main>
                 <div class="row">
-                    <div class="col-md-4" id="news">
+                    <div class="col-md-4 border" id="news">
+                        <ul class="list-group my-2">
+                            <li class="list-group-item">ニュース</li>
+                        </ul>
                         <div class="accordion" id="newsChild">
                         @foreach ($news as $year => $lists)
                             <div class="accordion-item">
@@ -51,10 +59,15 @@
                         @endforeach
                         </div>
                     </div>
-                    <div class="col-md-4" id="nouns">
-
+                    <div class="col-md-4 border" id="nouns">
+                        <ul class="list-group my-2">
+                            <li class="list-group-item">関連ワード</li>
+                        </ul>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 border">
+                        <ul class="list-group my-2">
+                            <li class="list-group-item">オリコンランキング</li>
+                        </ul>
                         <select id="music" class="form-select{{ $errors->has('music') ? ' is-invalid' : '' }}"
                             name="music">
                             <option value="">---</option>
