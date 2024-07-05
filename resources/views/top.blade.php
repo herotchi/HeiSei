@@ -43,7 +43,7 @@
                                         {{$year}}年
                                     </button>
                                 </h2>
-                                <div id="{{$year}}" class="accordion-collapse collapse" data-bs-parent="#newsChild">
+                                <div id="{{$year}}" class="accordion-collapse collapse bg-secondary-subtle" data-bs-parent="#newsChild">
                                     <div class="accordion-body">
                                         <ul class="list-group">
                                         @foreach ($lists as $list)

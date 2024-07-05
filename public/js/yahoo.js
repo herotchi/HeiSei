@@ -39,7 +39,7 @@ export class Yahoo
 
     removeSameNounsList() {
         const parentDiv = document.getElementById('nouns');
-        parentDiv.innerHTML = '';
+        parentDiv.innerHTML = `<ul class="list-group my-2"><li class="list-group-item">関連ワード</li></ul>`;
     }
 
 
@@ -71,7 +71,7 @@ export class Yahoo
 
                 const accordionCoppapseDiv = document.createElement('div');
                 accordionCoppapseDiv.id = key;
-                accordionCoppapseDiv.className = 'accordion-collapse collapse';
+                accordionCoppapseDiv.className = 'accordion-collapse collapse bg-secondary-subtle';
                 accordionCoppapseDiv.setAttribute('data-bs-parent', '#nounsChild');
                 accordionItemDiv.appendChild(accordionCoppapseDiv);
 
